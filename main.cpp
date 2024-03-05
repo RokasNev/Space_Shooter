@@ -6,10 +6,12 @@
 
 using namespace std;
 
+vector<string> difficuly = {"Easy  ","Hard  ","Insane  "};
 int initial_position = 6;
 int difficulty_level_speed;
 int obsticle_amount;
 int score = -12;
+int cursor_iterator = 0;
 
 void print(vector<vector<char>> &grid)
 {
@@ -86,7 +88,7 @@ void movement ()
     }
 }
 
-int obsticles(vector<vector<char>> &grid, int obsticle_amount)
+int obsticles(vector<vector<char>> &grid, int obsticle_amount, int cursor_iterator)
 {
     vector<int> obstacle_positions;
     vector<char> row_of_obsicles = {' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
@@ -165,17 +167,15 @@ void game_over(int score)
                                         \|_______|\|__|/       \|_______|\|__|\|__|
     )" << endl << endl;
 
-    cout << "                                                      " << "Your score: " << score << endl << endl;
+    cout << "                                       Difficulty level: " << difficuly[cursor_iterator] << "     " << "Your score: " << score << endl << endl;
 }
 
 void menu()
 {
-    vector<string> difficuly = {"Easy  ","Hard  ","Insane  "};
     string easy = "Easy *";
     string hard = "Hard *";
     string insane = "Insane *";
     string temp;
-    int cursor_iterator = 0;
 
     while(true)
     {
@@ -263,7 +263,7 @@ int main()
     {
         movement();
 
-        int hits = obsticles(grid, obsticle_amount);
+        int hits = obsticles(grid, obsticle_amount, cursor_iterator);
 
         score++;
 
