@@ -95,7 +95,7 @@ int obsticles(vector<vector<char>> &grid, int obsticle_amount)
 
     for(int i = 0; i < number_of_obsticles; i++)
     {
-        int rand_sk = (rand() % 12);
+        int rand_sk = (rand() % 13);
         obstacle_positions.push_back(rand_sk);
     }
 
